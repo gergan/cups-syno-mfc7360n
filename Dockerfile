@@ -9,11 +9,11 @@ RUN yum install epel-release -y && \
         yum -y install file a2ps libstdc++.i686 glibc.i686 policycoreutils-python wget inotify inotify-tools && \
         rm -rf /var/cache/yum
 
-RUN wget -T 10 -nd --no-cache http://www.brother.com/pub/bsc/linux/packages/hl3070cwlpr-1.1.2-1.i386.rpm && \
-        wget -T 10 -nd --no-cache http://www.brother.com/pub/bsc/linux/packages/hl3070cwcupswrapper-1.1.2-2.i386.rpm && \
-        rpm -ihv --nodeps --replacefiles --replacepkgs hl3070cwlpr-1.1.2-1.i386.rpm && \
-        rpm -ihv --nodeps --replacefiles --replacepkgs hl3070cwcupswrapper-1.1.2-2.i386.rpm && \
-        rm -rf hl3070cwlpr-1.1.2-1.i386.rpm hl3070cwcupswrapper-1.1.2-2.i386.rpm
+RUN wget -T 10 -nd --no-cache https://download.brother.com/welcome/dlf101124/brgenml1lpr-3.1.0-1.i386.rpm && \
+        wget -T 10 -nd --no-cache https://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-3.1.0-1.i386.rpm && \
+        rpm -ihv --nodeps --replacefiles --replacepkgs brgenml1lpr-3.1.0-1.i386.rpm && \
+        rpm -ihv --nodeps --replacefiles --replacepkgs brgenml1cupswrapper-3.1.0-1.i386.rpm && \
+        rm -rf brgenml1lpr-3.1.0-1.i386.rpm brgenml1cupswrapper-3.1.0-1.i386.rpm 
 
 RUN sed -i 's/Listen localhost:631/Listen 0.0.0.0:631/' /etc/cups/cupsd.conf && \
         sed -i 's/Browsing Off/Browsing On/' /etc/cups/cupsd.conf && \
